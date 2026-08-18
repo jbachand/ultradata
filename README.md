@@ -7,6 +7,26 @@ above most adult hearing.
 One HTML file. No dependencies, no build step, nothing fetched at runtime. Open it and
 it works, offline.
 
+**[▶ Live demo](https://jbachand.github.io/ultradata/)** — open it on two devices in the
+same room, start listening on one, and send from the other.
+
+> [!IMPORTANT]
+> **You probably can't hear this. Other people and animals can.**
+>
+> The 17.6–19.8 kHz carrier is inaudible to *most adults* only because high-frequency
+> hearing declines with age — by ~25 many people have lost the top of the range, and by
+> ~40 most have. That is the entire premise, and it is a statement about the listener,
+> not about the sound.
+>
+> **Children and teenagers routinely hear the whole band**, often clearly and often as
+> unpleasant. **Dogs hear to roughly 45 kHz and cats to roughly 64 kHz**, so 18–19 kHz
+> is not a faint edge tone to them — it sits comfortably mid-range, and a transmission
+> is simply a loud, obvious noise in the room.
+>
+> So: keep the drive level down, don't leave it transmitting on a loop around kids or
+> pets, and don't treat it as a covert channel. It isn't one — it's a channel that
+> happens to be quiet to the particular ears of an adult human.
+
 ```
 ┌──────────────┐                                   ┌──────────────┐
 │   sender     │   ((( ~18–19.8 kHz air )))        │  receiver    │
@@ -292,8 +312,8 @@ is worth making.
 
 - **Range**: a few metres in a quiet room. OFDM needs roughly 8–10 dB SNR where MFSK
   decodes below the noise floor, so it trades range for speed.
-- **"Inaudible" is approximate.** It holds for most adults; **teenagers, children and
-  pets often hear it**. This is not a covert channel.
+- **"Inaudible" is approximate**, and only for adults — see the note at the top. Kids,
+  teenagers and animals hear it plainly. This is not a covert channel.
 - **Hardware varies.** Many laptop speakers roll off above ~16 kHz. Bluetooth speakers
   almost always cut off below 17 kHz and cannot carry this at all.
 - **120-byte cap.** This is a channel for text, links, codes and contact cards — not
@@ -319,9 +339,17 @@ If the page runs inside an iframe whose host withholds microphone permission, re
 impossible there and no code inside the page can override it — transmit still works. The
 app detects this case and says so rather than failing silently.
 
+The [live demo](https://jbachand.github.io/ultradata/) is this same file served from
+GitHub Pages, which is HTTPS — so the microphone works there without any local setup.
+
 ## Layout
 
 ```
 index.html    the entire application — modem, UI, diagnostics
 README.md     this file
+LICENSE       MIT
 ```
+
+## License
+
+MIT — see [LICENSE](LICENSE).
